@@ -1,6 +1,5 @@
 # Banker-Algorithm
 
-# Banker's Algorithm
 
 This project was written in C# and consists of three Windows Forms.
 

@@ -25,6 +25,7 @@ namespace WindowsFormsApp2
         public  static List<string> steps_list = new List<string>();
 
 
+
         public Form2()
         {
             InitializeComponent();
@@ -360,6 +361,10 @@ namespace WindowsFormsApp2
                         {
                             flag5 = 2;
                         }
+                        else if (cellValue < 0) // add check for positive integer
+                        {
+                            flag5 = 3;
+                        }
                     }
                 }
             }
@@ -371,6 +376,11 @@ namespace WindowsFormsApp2
             if (flag5 == 2)
             {
                 MessageBox.Show("only integers values allowed in total ressources table");
+                return false;
+            }
+            if (flag5 == 3)
+            {
+                MessageBox.Show("only positive values allowed in total ressources table");
                 return false;
             }
             else
@@ -402,6 +412,10 @@ namespace WindowsFormsApp2
                         {
                             flag7 = 2;
                         }
+                        else if (cellValue < 0) // add check for positive integer
+                        {
+                            flag7 = 3;
+                        }
                     }
                 }
             }
@@ -415,6 +429,11 @@ namespace WindowsFormsApp2
                 MessageBox.Show("only integers values allowed in available ressources table");
                 return false;
             }
+            if (flag7 == 3)
+            {
+                MessageBox.Show("only positive values allowed in available ressources table");
+                return false;
+            }
             else
             {
                 return true;
@@ -423,6 +442,7 @@ namespace WindowsFormsApp2
 
         public bool current_allocated_Constraints()
         {
+            
             int flag = 0;
             int flag2 = 0;
             for (int row = 0; row < current_allocated_table.Rows.Count; row++)
@@ -440,11 +460,17 @@ namespace WindowsFormsApp2
                     {
                         int cellValue;
                         bool isInteger = int.TryParse(cell.Value.ToString(), out cellValue);
+                        
                         if (isInteger == false)
                         {
                             flag = 2;
                         }
+                        else if (cellValue < 0) // add check for positive integer
+                        {
+                            flag = 3;
+                        }
                     }
+                   
                 }
             }
             if (flag == 1)
@@ -452,11 +478,18 @@ namespace WindowsFormsApp2
                 MessageBox.Show("Please fill all the cells in current allocated table");
                 return false; ;
             }
-            if (flag == 2)
+            if (flag == 2 )
             {
                 MessageBox.Show("only integers values allowed in current allocated table");
                 return false;
             }
+            if (flag == 3)
+            {
+                MessageBox.Show("only positive values allowed in current allocated table");
+                return false;
+            }
+
+
             else
             {
                 return true;
@@ -487,6 +520,10 @@ namespace WindowsFormsApp2
                         {
                             flag3 = 2;
                         }
+                        else if (cellValue < 0) // add check for positive integer
+                        {
+                            flag3 = 3;
+                        }
                     }
                 }
             }
@@ -501,6 +538,12 @@ namespace WindowsFormsApp2
                 MessageBox.Show("only integers values allowed in maximum need table");
                 return false;
             }
+            if (flag3 == 3)
+            {
+                MessageBox.Show("only positive integers values allowed in maximum need table");
+                return false;
+            }
+
             else
             {
                 return true;
